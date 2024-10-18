@@ -1,0 +1,234 @@
+---
+import data from "../data.json";
+import userIcon from "../icons/user.svg?raw";
+import briefcaseIcon from "../icons/briefcase.svg?raw";
+import graduationCapIcon from "../icons/graduation-cap.svg?raw";
+
+const {
+  firstName,
+  lastName,
+  occupation,
+  summary,
+  experience,
+  education,
+  contactInformation,
+  skills,
+  languages,
+} = data;
+
+const { location, phone, email, links } = contactInformation;
+---
+
+<main class="resume">
+  <h1 class="resume__name">{`${firstName} ${lastName}`}</h1>
+  <h2 class="resume__occupation">{occupation}</h2>
+  <div class="resume__grid">
+    <div class="resume__left-side">
+      <section class="resume__profile-section">
+        <div class="resume__section-icon">
+          <Fragment set:html={userIcon} />
+        </div>
+        <div class="resume__section-content">
+          <h3 class="resume__section-title">Profile</h3>
+          <p class="resume__profile-summary">
+            {summary}
+          </p>
+        </div>
+      </section>
+
+      <section class="resume__experience-section">
+        <div class="resume__section-icon">
+          <Fragment set:html={briefcaseIcon} />
+        </div>
+        <div class="resume__section-content">
+          <h3 class="resume__section-title">Experience</h3>
+          {
+            experience
+              .slice()
+              .reverse()
+              .map(
+                ({
+                  role,
+                  company,
+                  location,
+                  startDate,
+                  endDate,
+                  description,
+                }) => (
+                  <div class="resume__experience-item">
+                    <p class="resume__experience-item-title">{`${role} at ${company}, ${location}`}</p>
+                    <p class="resume__experience-item-date">{`${startDate} - ${endDate}`}</p>
+                    <p class="resume__experience-item-description">
+                      {description}
+                    </p>
+                  </div>
+                )
+              )
+          }
+        </div>
+      </section>
+
+      <section class="resume__education-section">
+        <div class="resume__section-icon">
+          <Fragment set:html={graduationCapIcon} />
+        </div>
+        <div class="resume__section-content">
+          <h3 class="resume__section-title">Education</h3>
+          {
+            education.map(({ degree, institution, location }) => (
+              <p class="resume__experience-item-title">{`${degree} at ${institution}, ${location}`}</p>
+            ))
+          }
+        </div>
+      </section>
+    </div>
+
+    <div class="resume__right-side">
+      <section class="resume__details-section">
+        <h3 class="resume__section-title">Details</h3>
+        <p class="resume__location">{location}</p>
+        <p class="resume__phone">{phone}</p>
+        <p class="resume__email">{email}</p>
+      </section>
+
+      <section class="resume__links-section">
+        <h3 class="resume__section-title">Links</h3>
+        <ul class="resume__links-list">
+          {
+            links.map(({ label, link }) => (
+              <li class="resume__link-item">
+                <a target="_blank" href={link} class="resume__anchor">
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="resume__skills-section">
+        <h3 class="resume__section-title">Skills</h3>
+        <ul class="resume__skills-list">
+          {skills.map((skill) => <li class="resume__skill">{skill}</li>)}
+        </ul>
+      </section>
+
+      <section class="resume__languages-section">
+        <h3 class="resume__section-title">Languages</h3>
+        <ul class="resume__languages-list">
+          {
+            languages.map((language) => (
+              <li class="resume__language">{language}</li>
+            ))
+          }
+        </ul>
+      </section>
+    </div>
+  </div>
+</main>
+<style>
+  :root {
+    --accent-color: teal;
+  }
+
+  .resume {
+    max-width: 1200px;
+    margin: 64px auto;
+    padding: 80px;
+    background-color: #fff;
+    box-shadow: 4px 4px 8px #3338;
+
+    .resume__occupation {
+      margin-top: 8px;
+      font-weight: 400;
+      font-size: 18px;
+    }
+
+    .resume__grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-areas: "left left left left left left left left right right right right";
+      column-gap: 48px;
+      margin-top: 48px;
+    }
+
+    .resume__left-side {
+      grid-area: left;
+    }
+
+    .resume__right-side {
+      grid-area: right;
+    }
+
+    .resume__profile-section {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .resume__experience-section,
+    .resume__education-section {
+      display: flex;
+      flex-direction: row;
+      margin-top: 48px;
+    }
+
+    .resume__links-section,
+    .resume__skills-section,
+    .resume__languages-section {
+      margin-top: 48px;
+    }
+
+    .resume__section-title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .resume__profile-summary,
+    .resume__location,
+    .resume__phone,
+    .resume__email,
+    .resume__link-item,
+    .resume__skill,
+    .resume__language {
+      margin-top: 8px;
+      font-size: 20px;
+      line-height: 24px;
+    }
+
+    .resume__email,
+    .resume__anchor:link,
+    .resume__anchor:visited {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    .resume__anchor:hover {
+      text-decoration: underline;
+    }
+
+    .resume__experience-item-title {
+      margin-top: 24px;
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: bold;
+    }
+
+    .resume__experience-item-date {
+      margin-top: 8px;
+      font-size: 20px;
+      line-height: 24px;
+      color: #888;
+    }
+
+    .resume__experience-item-description {
+      margin-top: 8px;
+      font-size: 20px;
+      line-height: 24px;
+    }
+
+    svg {
+      height: 28px;
+      margin-right: 16px;
+    }
+  }
+</style>

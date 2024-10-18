@@ -1,0 +1,65 @@
+{
+  "firstName": "Leonel",
+  "lastName": "Aguirre",
+  "occupation": "Software Developer",
+  "summary": "I'm a software developer with over 5 years of experience, specializing in web development. I have a strong interest in UX/Ul design and web accessibility, ensuring my work is both visually appealing and user-friendly. I'm open to diverse projects, including mobile applications and machine learning, embracing opportunities to expand my skills.",
+  "contactInformation": {
+    "email": "leonel.aguirre182@gmail.com",
+    "phone": "+12 123-456-7890",
+    "location": "Leon, Mexico.",
+    "links": [
+      {
+        "label": "GitHub",
+        "link": "https://github.com/leonel-aguirre",
+        "username": "leonel-aguirre"
+      },
+      {
+        "label": "LinkedIn",
+        "link": "https://www.linkedin.com/in/leonel-aguirre182/",
+        "username": "leonel-aguirre182"
+      }
+    ]
+  },
+  "skills": [
+    "Web Development",
+    "Accessibility",
+    "Machine Learning"
+  ],
+  "languages": [
+    "English (B2).",
+    "Spanish (Native)."
+  ],
+  "experience": [
+    {
+      "company": "MD Manufacturing",
+      "role": "Software Developer Intern",
+      "location": "Leon, Guanajuato, Mexico.",
+      "startDate": "April 2017",
+      "endDate": "October 2020",
+      "description": "Developed an internal ERP system using PHP and Javascript, and provided comprehensive IT support for the company."
+    },
+    {
+      "company": "RTA Software",
+      "role": "Software Developer",
+      "location": "Leon, Guanajuato, Mexico.",
+      "startDate": "October 2020",
+      "endDate": "Present",
+      "description": "Contributed to software development for various projects across multiple tech stacks, primarily focusing on web and mobile development. Some projects were developed directly for the company, while others were as a contractor for their clients. Relevant project: Developed a generic CRM system that enables companies to interact with their clients, integrated with a chatbot and accessible through both a website and a mobile app using React Native and NextJS."
+    },
+    {
+      "company": "Harvard Business Publishing",
+      "role": "Frontend Web Developer",
+      "location": "Boston, Massachusetts, EU (Remote).",
+      "startDate": "April 2021",
+      "endDate": "Present",
+      "description": "Contributed to enhancing the web platform of one of the education verticals at Harvard Business Publishing, built with React. Key activities include implementing a responsive redesign of the site, migrating the testing suite of the codebase, improving site accessibility to align with WCAG standards, and interacting with the CMS system. These contributions aim to create an engaging and accessible user experience while ensuring high-quality code and performance."
+    }
+  ],
+  "education": [
+    {
+      "institution": "TecNM Campus Leon",
+      "degree": "BS in Systems Engineering",
+      "location": "Leon, Guanajuato, Mexico."
+    }
+  ]
+}
