@@ -95,11 +95,18 @@ const { location, phone, email, links } = contactInformation;
         <h3 class="resume__section-title">Links</h3>
         <ul class="resume__links-list">
           {
-            links.map(({ label, link }) => (
+            links.map(({ label, link, username }) => (
               <li class="resume__link-item">
-                <a target="_blank" href={link} class="resume__anchor">
+                <a
+                  target="_blank"
+                  href={link}
+                  class="resume__anchor --hide-on-print"
+                >
                   {label}
                 </a>
+                <p class="resume__link-item-text --show-on-print">
+                  <b>{label}:</b> {username}
+                </p>
               </li>
             ))
           }
@@ -128,20 +135,51 @@ const { location, phone, email, links } = contactInformation;
 </main>
 <style>
   :root {
-    --accent-color: teal;
+    --accent-color: dodgerblue;
   }
 
   .resume {
     max-width: 1200px;
     margin: 64px auto;
     padding: 80px;
-    background-color: #fff;
-    box-shadow: 4px 4px 8px #3338;
+    background-color: #ffffff;
+    box-shadow: 4px 4px 8px #3333338;
+
+    @media print {
+      max-width: initial;
+      margin: 0;
+      padding: 16px;
+      box-shadow: none;
+    }
+
+    .--show-on-print {
+      display: none;
+
+      @media print {
+        display: initial;
+      }
+    }
+
+    .--hide-on-print {
+      @media print {
+        display: none;
+      }
+    }
+
+    .resume__name {
+      @media print {
+        font-size: 26px;
+      }
+    }
 
     .resume__occupation {
       margin-top: 8px;
       font-weight: 400;
       font-size: 18px;
+
+      @media print {
+        font-size: 14px;
+      }
     }
 
     .resume__grid {
@@ -150,6 +188,10 @@ const { location, phone, email, links } = contactInformation;
       grid-template-areas: "left left left left left left left left right right right right";
       column-gap: 48px;
       margin-top: 48px;
+
+      @media print {
+        margin-top: 24px;
+      }
     }
 
     .resume__left-side {
@@ -170,17 +212,29 @@ const { location, phone, email, links } = contactInformation;
       display: flex;
       flex-direction: row;
       margin-top: 48px;
+
+      @media print {
+        margin-top: 24px;
+      }
     }
 
     .resume__links-section,
     .resume__skills-section,
     .resume__languages-section {
       margin-top: 48px;
+
+      @media print {
+        margin-top: 24px;
+      }
     }
 
     .resume__section-title {
       font-size: 24px;
       font-weight: bold;
+
+      @media print {
+        font-size: 18px;
+      }
     }
 
     .resume__profile-summary,
@@ -192,10 +246,12 @@ const { location, phone, email, links } = contactInformation;
     .resume__language {
       margin-top: 8px;
       font-size: 20px;
-      line-height: 24px;
+
+      @media print {
+        font-size: 13px;
+      }
     }
 
-    .resume__email,
     .resume__anchor:link,
     .resume__anchor:visited {
       color: var(--accent-color);
@@ -209,26 +265,46 @@ const { location, phone, email, links } = contactInformation;
     .resume__experience-item-title {
       margin-top: 24px;
       font-size: 20px;
-      line-height: 24px;
       font-weight: bold;
+
+      @media print {
+        margin-top: 16px;
+        font-size: 13px;
+      }
     }
 
     .resume__experience-item-date {
       margin-top: 8px;
       font-size: 20px;
-      line-height: 24px;
-      color: #888;
+      color: #888888;
+
+      @media print {
+        font-size: 13px;
+      }
     }
 
     .resume__experience-item-description {
       margin-top: 8px;
       font-size: 20px;
-      line-height: 24px;
+
+      @media print {
+        font-size: 13px;
+      }
+    }
+
+    .resume__links-list,
+    .resume__skills-list,
+    .resume__languages-list {
+      padding-left: 32px;
     }
 
     svg {
       height: 28px;
       margin-right: 16px;
+
+      @media print {
+        height: 20px;
+      }
     }
   }
 </style>
